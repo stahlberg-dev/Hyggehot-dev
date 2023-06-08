@@ -1,0 +1,43 @@
+.product-advantages {
+
+    &__container {
+    }
+
+    &__advantage {
+        display: flex;
+        flex-flow: column-reverse nowrap;
+        @include adaptiveValue("gap", 20px, 25px, $minWidth, $smallMobile);
+        @include adaptiveValue("margin-bottom", 35px, 50px, $minWidth, $smallMobile);
+
+        @media (min-width: $smallMobile) {
+            flex-flow: row nowrap;
+            align-items: center;
+            gap: 2%;
+            @include adaptiveValue("margin-bottom", 10px, 30px, $smallMobile, $desktop);
+
+            &:nth-child(even) {
+                flex-flow: row-reverse nowrap;
+            }
+        }
+    }
+
+    &__advantage-photo {
+        flex: 0 0 auto;
+
+        @media (min-width: $smallMobile) {
+            width: 49%;
+        }
+    }
+
+    &__advantage-text {
+        font-family: $TTNorms;
+        @include adaptiveValue("font-size", 18px, 24px, $minWidth, $smallMobile);
+
+        @media (min-width: $smallMobile) {
+            flex: 1 1 auto;
+            @include adaptiveValue("padding-left", 5px, 55px, $smallMobile, $desktop);
+            @include adaptiveValue("padding-right", 5px, 55px, $smallMobile, $desktop);
+            @include adaptiveValue("font-size", 14px, 24px, $smallMobile, $desktop);
+        }
+    }
+}

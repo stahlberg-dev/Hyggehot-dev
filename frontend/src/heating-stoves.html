@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru" prefix="og: http://ogp.me/ns#">
+    @@include('html/head.html', {
+        "descr": "Отопительные печи Hyggelig от производителя. Доставка по всей России за 3-7 дней.",
+        "keywords": "Hyggelig, отопительная печь",
+        "title": "Отопительные печи | Hyggelig", 
+    })
+<body>
+    <div class="page-wrapper">
+
+        @@include('html/header.html',{"page": "heating-stoves",})
+        
+        <main class="page-wrapper__page-content category-page bottom-line">
+
+            @@include('html/heating-sections/heating-title-screen.html',{})
+
+            @@include('html/heating-sections/heating-catalog.html',{})
+
+        </main>
+
+        @@include('html/footer.html',{"page": "heating-stoves",})
+
+    </div>
+
+    @@include('html/pixels.html',{})
+
+    @@include('html/popups.html',{})
+
+    @@include('html/js.html',{})
+
+</body>
+</html>

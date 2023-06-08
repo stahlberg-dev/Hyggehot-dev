@@ -1,0 +1,37 @@
+@use "sass:math";
+
+$Muller: Muller;
+$TTNorms: TTNorms;
+$primaryColor: #D34418;
+$secondaryColor: #FFF;
+$thirdColor: #303030;
+$fourthColor: #9A9A9A;
+$backgroundColor: #262626;
+
+$minWidth: 320px;
+$maxContentWidth: 1326px;
+$containerPadding: 20px;
+
+$maxContainerWidth: $maxContentWidth + $containerPadding * 2; 
+
+$desktop: $maxContainerWidth + 0.02px;
+$tablet: 992.02px;
+$mobile: 768.02px;
+$mediumMobile: 600.02px;
+$smallMobile: 480.02px;
+
+@import "basic_components/reset.scss";
+@import "fonts.scss";
+@import "basic_components/mixins.scss";
+@import "../../node_modules/swiper/swiper.scss";
+@import '../../node_modules/swiper/modules/effect-fade/effect-fade.scss';
+@import "basic_components/fancybox.scss";
+@import "common.scss";
+@import "main-page.scss";
+@import "catalog-page.scss";
+@import "category-page.scss";
+@import "product-page.scss";
+@import "header.scss";
+@import "footer.scss";
+@import "popups.scss";
+

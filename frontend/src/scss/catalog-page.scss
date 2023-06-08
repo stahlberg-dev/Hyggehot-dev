@@ -1,0 +1,29 @@
+.catalog-page {
+
+    &__catalog-title-screen {
+        @include adaptiveValue("margin-top", 90px, 130px, $minWidth, $mobile);
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-top", 100px, 130px, $mobile, $desktop);
+        }
+    }
+
+    &__catalog-camp {
+    }
+
+    &__catalog-heating {
+    }
+
+    &__catalog-bath {
+        @include adaptiveValue("margin-bottom", 25px, 60px, $minWidth, $mobile);
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-bottom", 30px, 60px, $mobile, $desktop);
+        }
+    }
+}
+
+@import "catalog-sections/catalog-title-screen.scss";
+@import "catalog-sections/catalog-camp.scss";
+@import "catalog-sections/catalog-heating.scss";
+@import "catalog-sections/catalog-bath.scss";

@@ -1,0 +1,142 @@
+.production {
+
+    &__slider {
+        display: none;
+        
+        @media (min-width: $mobile) {
+            display: block;
+            position: relative;
+            width: 100%;
+            @include adaptiveValue("height", 400px, 630px, $mobile, $desktop);
+            margin: 0 0 0 auto;
+        }
+
+        @media (min-width: $desktop) {
+            aspect-ratio: 1300/630;
+            width: auto;
+        }
+    }
+
+    &__slider-wrapper {
+    }
+
+    &__slider-slide {
+    }
+
+    &__slide-photo {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &__background-mobile {
+        display: block;
+        width: 100%;
+        
+        @media (min-width: $mobile) {
+            display: none;
+        }
+    }
+
+    &__container-wrapper {
+        width: 100%;
+
+        @media (min-width: $mobile) {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+        }
+    }
+
+    &__container {
+    }
+
+    &__title {
+        @include adaptiveValue("margin-bottom", 15px, 40px, $minWidth, $mobile);
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-bottom", 20px, 30px, $mobile, $desktop);
+        }
+    }
+
+    &__description {
+        @include adaptiveValue("margin-bottom", 25px, 40px, $minWidth, $mobile);
+        font-family: $TTNorms;
+        @include adaptiveValue("font-size", 15px, 22px, $minWidth, $mobile);
+        font-weight: 400;
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("max-width", 470px, 690px, $mobile, $desktop);
+            @include adaptiveValue("margin-bottom", 20px, 40px, $mobile, $desktop);
+            @include adaptiveValue("font-size", 14px, 18px, $mobile, $desktop);
+        }
+    }
+    
+    &__complectation-title {
+        @include adaptiveValue("margin-bottom", 15px, 40px, $minWidth, $mobile);
+        text-transform: uppercase;
+        line-height: 1;
+        @include adaptiveValue("font-size", 17px, 24px, $minWidth, $mobile);
+        font-weight: 500;
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-bottom", 15px, 30px, $mobile, $desktop);
+            @include adaptiveValue("font-size", 16px, 20px, $mobile, $desktop);
+        }
+    }
+
+    &__complectation {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: flex-start;
+        @include adaptiveValue("gap", 20px, 40px, $minWidth, $mobile);
+        @include adaptiveValue("margin-bottom", 25px, 45px, $minWidth, $mobile);
+
+        @media (min-width: $mobile) {
+            flex-flow: row nowrap;
+            @include adaptiveValue("gap", 40px, 80px, $mobile, $desktop);
+            @include adaptiveValue("max-width", 470px, 690px, $mobile, $desktop);
+            margin-bottom: 0;
+        }
+    }
+
+    &__complectation-item {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        @include adaptiveValue("gap", 10px, 35px, $minWidth, $mobile);
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("gap", 10px, 20px, $mobile, $desktop);
+        }
+    }
+
+    &__complectation-icon {
+        flex: 0 0 auto;
+        aspect-ratio: 47/51;
+        @include adaptiveValue("height", 40px, 65px, $minWidth, $mobile);
+        fill: $primaryColor;
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("height", 30px, 50px, $mobile, $desktop);
+        }
+    }
+
+    &__complectation-text {
+        flex: 1 1 auto;
+        font-family: $TTNorms;
+        @include adaptiveValue("font-size", 16px, 24px, $minWidth, $mobile);
+        font-weight: 400;
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("font-size", 14px, 18px, $mobile, $desktop);
+        }
+    }
+}

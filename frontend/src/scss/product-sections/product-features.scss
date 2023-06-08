@@ -1,0 +1,163 @@
+.product-features {
+
+    &__container {
+    }
+
+    &__title {
+        @include adaptiveValue("margin-bottom", 25px, 50px, $minWidth, $mobile);
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-bottom", 35px, 55px, $mobile, $desktop);
+        }
+    }
+
+    &__content {
+    }
+
+    &__image-wrapper  {
+
+        .product-features__content_no-slider & {
+            display: grid;
+            grid-template-rows: repeat(6, 1fr);
+            grid-template-columns: 1fr;
+            @include adaptiveValue("gap", 10px, 15px, $minWidth, $smallMobile);
+    
+            @media (min-width: $smallMobile) {
+                grid-template-rows: 1fr 1fr;
+                grid-template-columns: 1fr 1fr;
+                @include adaptiveValue("gap", 15px, 30px, $smallMobile, $mobile);
+            }
+    
+            @media (min-width: $mobile) {
+                grid-template-rows: 1fr 1fr 1fr;
+                grid-template-columns: 1fr 1fr 1fr;
+                @include adaptiveValue("gap", 15px, 25px, $mobile, $desktop);
+            }
+        }
+    }
+
+    &__image {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        aspect-ratio: 335/280;
+
+        @media (min-width: $smallMobile) {
+            aspect-ratio: 420/280;
+        }
+
+        &_number_1 {
+            grid-row: 1;
+
+            @media (min-width: $smallMobile) {
+                grid-row: 3;
+                grid-column: 1;
+            }
+
+            @media (min-width: $mobile) {
+                grid-row: 1;
+                grid-column: 1
+            }
+        }
+
+        &_number_2 {
+        }
+
+        &_number_3 {
+            grid-row: 3;
+
+            @media (min-width: $smallMobile) {
+                grid-row: 1/3;
+                grid-column: 1/3;
+            }
+
+            @media (min-width: $mobile) {
+                grid-row: 1/3;
+                grid-column: 2/4;
+                aspect-ratio: unset;
+                height: 100%;
+            }
+        }
+
+        &_number_4 {
+            grid-row: 4;
+
+            @media (min-width: $smallMobile) {
+                grid-row: 4/6;
+                grid-column: 1/3;
+            }
+
+            @media (min-width: $mobile) {
+                grid-row: 3;
+                grid-column: 1;
+            }
+        }
+
+        &_number_5 {
+        }
+
+        &_number_6 {
+        }
+    }
+
+    &__photo {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1.001, 1.001);
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+
+        @media (any-hover: hover) {
+
+            &:hover {
+                transform: translate(-50%, -50%) scale(1.1, 1.1);
+            }
+        }
+    }
+
+    &__caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #131313;
+        font-family: $TTNorms; 
+        @include adaptiveValue("padding", 10px, 20px, $minWidth, $smallMobile);  
+        @include adaptiveValue("font-size", 15px, 17px, $minWidth, $smallMobile); 
+        
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("padding", 5px, 10px, $smallMobile, $mobile);  
+            @include adaptiveValue("font-size", 12px, 18px, $smallMobile, $mobile); 
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("padding", 6px, 12px, $mobile, $desktop);  
+            @include adaptiveValue("font-size", 13px, 18px, $mobile, $desktop);
+        }
+    }
+
+    &__scrollbar {
+        margin-top: 15px;
+        height: 5px;
+        margin-top: 15px;
+        border-radius: 1px;
+        background-color: rgba(0, 0, 0, 0.5);
+        cursor: grab;
+        -webkit-tap-highlight-color: transparent;
+    
+        .swiper-scrollbar-drag {
+            height: 5px;
+            border-radius: 1px;
+            background-color: $primaryColor;
+        }
+
+        .product-features__content_no-slider & {
+            display: none;
+        }
+    }
+}
+

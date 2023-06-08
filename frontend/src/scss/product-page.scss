@@ -1,0 +1,39 @@
+.product-page {
+
+    &__product-title-screen {
+        @include adaptiveValue("margin-bottom", 50px, 120px, $minWidth, $mobile);
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-bottom", 60px, 120px, $mobile, $desktop);
+        }
+    }
+
+    &__product-advantages {
+        @include adaptiveValue("margin-bottom", 50px, 120px, $minWidth, $mobile);
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-bottom", 60px, 120px, $mobile, $desktop);
+        }
+    }
+
+    &__product-characteristics {
+        @include adaptiveValue("margin-bottom", 50px, 120px, $minWidth, $mobile);
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-bottom", 60px, 120px, $mobile, $desktop);
+        }
+    }
+
+    &__product-features {
+        @include adaptiveValue("margin-bottom", 50px, 120px, $minWidth, $mobile);
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-bottom", 60px, 120px, $mobile, $desktop);
+        }
+    }
+}
+
+@import "product-sections/product-title-screen.scss";
+@import "product-sections/product-advantages.scss";
+@import "product-sections/product-characteristics.scss";
+@import "product-sections/product-features.scss";

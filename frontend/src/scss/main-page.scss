@@ -1,0 +1,52 @@
+.main-page {
+
+    &__title-screen {
+        @include adaptiveValue("margin-bottom", 50px, 120px, $minWidth, $mobile);
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-bottom", 60px, 120px, $mobile, $desktop);
+        }
+    }
+
+    &__catalog {
+        @include adaptiveValue("margin-bottom", 50px, 120px, $minWidth, $mobile);
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-bottom", 60px, 120px, $mobile, $desktop);
+        }
+    }
+
+    &__production {
+        position: relative;
+        @include adaptiveValue("margin-bottom", 50px, 120px, $minWidth, $mobile);
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-bottom", 60px, 120px, $mobile, $desktop);
+        }
+    }
+
+    &__partnership {
+        position: relative;
+        @include adaptiveValue("margin-bottom", 50px, 120px, $minWidth, $mobile);
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-bottom", 60px, 120px, $mobile, $desktop);
+        }
+    }
+
+    &__gallery {
+        position: relative;
+        @include adaptiveValue("margin-bottom", 50px, 80px, $minWidth, $mobile);
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-bottom", 30px, 60px, $mobile, $desktop);
+        }
+    }
+}
+
+@import "main-sections/main-title-screen.scss";
+@import "main-sections/main-catalog.scss";
+@import "main-sections/main-production.scss";
+@import "main-sections/main-partnership.scss";
+@import "main-sections/main-gallery.scss";
+

@@ -1,0 +1,312 @@
+.header {
+    width: 100%;
+    height: 0px;
+
+    &__wrapper {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        background-color: rgba(38, 38, 38, 0.7);
+
+        &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(10px);
+        }
+    }
+
+    &__container {
+    }
+
+    &__body {
+        position: relative;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        min-height: 60px;
+        padding: 5px 0;
+        transition: min-height 0.3s ease;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("min-height", 60px, 70px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("min-height", 60px, 70px, $mobile, $desktop);
+        }
+    }
+
+    &__logo {
+        flex-grow: 0;
+        flex-shrink: 0;
+        height: 30px;
+        z-index: 5;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("height", 30px, 40px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("height", 30px, 40px, $mobile, $desktop);
+        }
+
+        @media (min-width: $tablet) {
+            @include adaptiveValue("margin-right", 50px, 150px, $tablet, $desktop);
+        }
+    }
+
+    &__logo-icon {
+        display: block;
+        height: 100%;
+    }
+
+    &__menu {
+        flex: 1 1 auto;
+
+        @media (min-width: $tablet) {
+            @include adaptiveValue("margin-right", 50px, 150px, $tablet, $desktop);
+        }
+    }
+
+    &__phone {
+        display: none;
+
+        @media (min-width: $mobile) {
+            display: block;
+            flex: 0 0 auto;
+            margin-right: 40px;
+            transform: translateY(10%);
+            line-height: 1;
+            font-size: 18px;
+            font-weight: 700;
+            color: $secondaryColor;
+            transition: color 0.3s ease;
+        }
+        
+        @media (min-width: $tablet) {
+            margin-right: 0;
+        }
+    }
+
+    &__burger {
+        position: relative;
+    }
+
+    &__link {
+        position: relative;
+        transition: color 0.3s ease;
+        
+        @include mobileClickAnimation($secondaryColor, 20px, 10px);
+
+        &.menu__link {
+
+            &::after {
+
+                @media (min-width: $mobile) {
+                    transform: translate(-50%, -60%);
+                }
+            }
+
+            &_type_active {
+                color: $primaryColor;
+                pointer-events: none;
+            }
+
+            &_type_desabled {
+                color: $fourthColor;
+                pointer-events: none;
+            }
+        }
+
+        &.menu__phone-link,
+        &.header__phone {
+
+            &::after {
+                transform: translate(-50%, -60%);
+            }
+        }
+
+        @media (any-hover: hover) {
+                
+            &:hover {
+                color: $primaryColor;
+            }
+        }
+
+        &_clicked {
+            color: $primaryColor;
+        }
+    }
+}
+
+@include burger(3px);
+
+@media (min-width: $smallMobile) {
+    @include burger(4px);
+}
+
+.menu {
+
+    &__body {
+        position: fixed;
+        top: 0;
+        left: calc(100% + $minWidth);
+        right: calc(-100% - $minWidth);
+        min-width: $minWidth;
+        width: 100%;
+        height: 100%;
+        padding: 0 $containerPadding;
+        padding-top: 60px;
+        padding-bottom: $containerPadding;
+        overflow: auto;
+        transition: right 0.3s ease,
+                    left 0.3s ease;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("padding-top", 60px, 70px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("padding-top", 60px, 70px, $mobile, $desktop);
+        }
+        
+        @media (min-width: $tablet) {
+            position: static;
+            height: 100%;
+            padding: 0;
+            overflow: visible;
+        }
+
+        &::before {
+            content: '';
+            display: block;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: calc(100% + $minWidth);
+            right: calc(-100% - $minWidth);
+            background-color: rgba(38, 38, 38, 0.7);
+            backdrop-filter: blur(10px);
+            z-index: -1;
+            transition: right 0.3s ease,
+                        left 0.3s ease;
+
+            @media (min-width: $tablet) {
+                display: none;
+            }
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            position: fixed;
+            top: 0;
+            left: calc(100% + $minWidth);
+            right: calc(-100% - $minWidth);
+            width: 100%;
+            height: 60px;
+            background-color: $backgroundColor;
+            z-index: 1;
+            transition: right 0.3s ease,
+                        left 0.3s ease;
+
+            @media (min-width: $smallMobile) {
+                @include adaptiveValue("height", 60px, 70px, $smallMobile, $mobile);
+            }
+    
+            @media (min-width: $mobile) {
+                @include adaptiveValue("height", 60px, 70px, $mobile, $desktop);
+            }
+
+            @media (min-width: $tablet) {
+                display: none;
+            }
+        }
+
+        &_active {
+            left: 0;
+            right: 0;
+
+            &::before {
+                left: 0;
+                right: 0;
+            }
+
+            &::after {
+                left: 0;
+                right: 0;
+            }
+        }
+    }
+
+    &__list {
+
+        @media (min-width: $tablet) {
+            display: flex; 
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+    &__item {
+        display: block;
+        position: relative;
+        @include adaptiveValue("padding-top", 10px, 25px, $minWidth, $tablet);
+        @include adaptiveValue("padding-bottom", 10px, 25px, $minWidth, $tablet);
+        text-align: center;
+
+        @media (min-width: $tablet) {
+            padding: 0;
+        }
+    }
+
+    &__link {
+        display: inline-block;
+        transform: translateY(10%);
+        white-space: nowrap;
+        line-height: 1;
+        font-family: $TTNorms;
+        @include adaptiveValue("font-size", 14px, 36px, $minWidth, $tablet);
+        font-weight: 400;
+
+        @media (min-width: $tablet) {
+            display: block;
+            text-transform: uppercase;
+            font-family: $Muller;
+            @include adaptiveValue("font-size", 16px, 18px, $tablet, $desktop);
+            font-weight: 500;
+        }
+    }
+
+    &__phone {
+        display: block;
+        position: relative;
+        @include adaptiveValue("padding-top", 20px, 50px, $minWidth, $tablet);
+        @include adaptiveValue("padding-bottom", 20px, 50px, $minWidth, $tablet);
+        text-align: center;
+
+        @media (min-width: $mobile) {
+            display: none;
+        }
+    }
+
+    &__phone-link {
+        display: inline-block;
+        transform: translateY(10%);
+        white-space: nowrap;
+        line-height: 1;
+        @include adaptiveValue("font-size", 16px, 42px, $minWidth, $tablet);
+        font-weight: 700;
+    }
+}
+

@@ -1,0 +1,645 @@
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+
+    @media (min-width: $smallMobile) {
+        @include adaptiveValue("scroll-padding-top", 80px, 90px, $smallMobile, $mobile);
+    }
+
+    @media (min-width: $mobile) {
+        @include adaptiveValue("scroll-padding-top", 80px, 90px, $mobile, $desktop);
+    }
+}
+
+body {
+    background-color: $backgroundColor;
+    font-family: $Muller;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: $secondaryColor;
+    
+    &.locked {
+        overflow: hidden;
+    }
+}
+
+.scroller {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    overflow-y: scroll;
+    z-index: 199;
+    pointer-events: none;
+
+    &.disable-pointer {
+        z-index: 300;
+        pointer-events: auto;
+    }
+}
+
+.page-wrapper {
+    display: flex;
+    flex-flow: column nowrap;
+    min-height: 100%;
+    overflow: hidden;
+
+    &__page-content {
+        position: relative;
+        flex: 1 1 auto;
+    }
+}
+
+.container {
+    max-width: $maxContainerWidth;
+    min-width: $minWidth;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 $containerPadding;
+}
+
+.bottom-line {
+
+    &::after  {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%,
+                                           rgba(255, 255, 255, 1) 50%, 
+                                           rgba(255, 255, 255, 0) 100%);
+
+    }
+
+    &_hide_tablet {
+
+        &::after {
+
+            @media (min-width: $tablet) {
+                display: none;
+            }
+        }
+    }
+}
+
+.button {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    @include adaptiveValue("height", 40px, 50px, $minWidth, $mobile);
+    border-radius: 40px;
+    border-style: solid;
+    border-width: 1px;
+    cursor: pointer;
+    transition: background-color 0.3s ease,
+                color 0.3s ease, 
+                border-color 0.3s ease,
+                opacity 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+
+    @media (min-width: $mobile) {
+        @include adaptiveValue("height", 40px, 50px, $mobile, $desktop);
+    }
+
+    &_color_primary {
+        border-color: $secondaryColor;
+        background-color: $primaryColor;
+        color: $secondaryColor;
+
+        @media (any-hover: hover) {
+    
+            &:hover {           
+                background-color: $backgroundColor;
+            }
+        }
+
+        &.button_clicked {
+            background-color: $backgroundColor;
+        }
+    }
+
+    &_color_transparent {
+        border-color: $fourthColor;
+        background-color: transparent;
+        color: $fourthColor;
+
+        @media (any-hover: hover) {
+    
+            &:hover {           
+                border-color: $primaryColor;
+                color: $primaryColor;
+            }
+        }
+
+        &.button_clicked {
+            color: $primaryColor;
+            border-color: $primaryColor;
+            opacity: 1;
+        }
+    }
+
+    &__text {
+        z-index: 10;
+        line-height: 1;
+        font-family: $TTNorms;
+        @include adaptiveValue("font-size", 16px, 20px, $minWidth, $mobile);
+        font-weight: 400;
+        pointer-events: none;
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("font-size", 16px, 20px, $mobile, $desktop);
+        }
+    }
+}
+
+.title {
+    text-transform: uppercase;
+    line-height: 1;
+    font-weight: 500;
+    @include adaptiveValue("font-size", 28px, 42px, $minWidth, $mobile);
+
+    @media (min-width: $mobile) {
+        @include adaptiveValue("font-size", 32px, 42px, $mobile, $desktop);
+    }
+    
+    &__highlighting {
+        color: $primaryColor;
+    }
+}
+
+.subtitle {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-end;
+    @include adaptiveValue("gap", 12px, 25px, $minWidth, $mobile);
+
+    @media (min-width: $mobile) {
+        @include adaptiveValue("gap", 15px, 25px, $mobile, $desktop);
+    }
+
+    &__icon {
+        @include adaptiveValue("width", 40px, 57px, $minWidth, $mobile);
+        @include adaptiveValue("height", 35px, 50px, $minWidth, $mobile);
+        fill: $primaryColor;
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("width", 40px, 57px, $mobile, $desktop);
+            @include adaptiveValue("height", 35px, 50px, $mobile, $desktop);
+        }
+    }
+
+    &__text {
+        text-transform: uppercase;
+        line-height: 1;
+        font-weight: 500;
+        @include adaptiveValue("font-size", 18px, 30px, $minWidth, $mobile);
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("font-size", 24px, 30px, $mobile, $desktop);
+        }
+    }
+
+    &__highlighting {
+        color: $primaryColor;
+    }
+}
+
+.form {
+
+    &__input {
+        display: block;
+        width: 100%;
+        @include adaptiveValue("margin-bottom", 7px, 20px, $minWidth, $mobile);
+        @include adaptiveValue("padding", 7px, 10px, $minWidth, $mobile);
+        border-bottom: 1px solid $fourthColor;
+        background-color: transparent;
+        line-height: 1.2;
+        font-family: $TTNorms;
+        @include adaptiveValue("font-size", 15px, 24px, $minWidth, $mobile);
+        font-weight: 400;
+        color: $secondaryColor;
+        
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-bottom", 7px, 10px, $mobile, $desktop);
+            @include adaptiveValue("padding", 7px, 10px, $mobile, $desktop);
+            @include adaptiveValue("font-size", 16px, 18px, $mobile, $desktop);
+        }
+
+        
+        &::placeholder {
+            color: $primaryColor;
+            transition: color 0.3s ease;
+		}
+
+        &:focus {
+            
+            &::placeholder {
+                color: transparent;
+            }
+        }
+    }
+
+    &__agreement {
+        display: flex;
+        position: relative;
+        align-items: flex-start;
+        @include adaptiveValue("margin-top", 15px, 40px, $minWidth, $mobile);
+        @include adaptiveValue("margin-bottom", 20px, 30px, $minWidth, $mobile);
+        @include adaptiveValue("line-height", 14px, 20px, $minWidth, $mobile);
+        @include adaptiveValue("font-size", 12.5px, 18px, $minWidth, $mobile);
+        font-weight: 400;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-top", 15px, 25px, $mobile, $desktop);
+            @include adaptiveValue("margin-bottom", 7px, 15px, $mobile, $desktop);
+            line-height: 14px;
+            font-size: 12.5px;
+        }
+    }
+
+    &__agreement-input {
+        display: block;
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    &__agreement-checkbox {
+        position: relative;
+        @include adaptiveValue("margin-right", 5px, 10px, $minWidth, $mobile);
+        flex-grow: 0;
+        flex-shrink: 0;
+        @include adaptiveValue("flex-basis", 10px, 16px, $minWidth, $mobile);
+        @include adaptiveValue("height", 10px, 16px, $minWidth, $mobile);
+        @include adaptiveValue("margin-top", 0px, -1px, $minWidth, $mobile);
+        border: 1px solid $fourthColor;
+        background-color: $secondaryColor;
+
+        @media (min-width: $mobile) {
+            flex-basis: 12px;
+            height: 12px;
+            margin-top: -1px;
+            margin-right: 5px;
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            right: 50%;
+            bottom: 50%;
+            @include adaptiveValue("width", 5px, 8px, $minWidth, $mobile);
+            @include adaptiveValue("height", 7px, 11px, $minWidth, $mobile);
+            border-right: 2px solid $primaryColor;
+            border-bottom: 2px solid $primaryColor;
+            transform: translate(50%, 35%) rotate(45deg);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+
+            @media (min-width: $mobile) {
+                width: 6px;
+                height: 8px;
+            }
+
+            .form__agreement-input:checked + & {
+                opacity: 1;
+            }
+        }
+    }
+
+    &__agreement-text {
+        color: $fourthColor;
+        transition: color 0.3s ease;
+
+        @media (any-hover: hover) {
+            &:hover {
+                color: $primaryColor;
+            }
+        }
+
+        .form__agreement-input:checked ~ & {
+            color: $primaryColor;
+        }
+    }
+
+    &__button {
+        width: 100%;
+    }
+
+    &__button-text {
+    }
+}
+
+.cards {
+
+    &__wrapper {
+
+        .cards_no-slider & {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-auto-rows: 1fr; 
+            grid-auto-flow: row;
+            @include adaptiveValue("row-gap", 15px, 20px, $minWidth, $mediumMobile);
+    
+            @media (min-width: $mediumMobile) {
+                grid-template-columns: 1fr 1fr;
+                @include adaptiveValue("row-gap", 15px, 25px, $mediumMobile, $mobile);
+                @include adaptiveValue("column-gap", 15px, 25px, $mediumMobile, $mobile);
+            }
+    
+            @media (min-width: $mobile) {
+                grid-template-columns: repeat(3, 1fr);
+                @include adaptiveValue("row-gap", 15px, 25px, $mobile, $desktop);
+                @include adaptiveValue("column-gap", 15px, 25px, $mobile, $desktop);
+            }
+        }
+    }
+
+    &__card {
+    }
+
+    &__scrollbar {
+        height: 5px;
+        margin-top: 15px;
+        border-radius: 1px;
+        background-color: rgba(0, 0, 0, 0.5);
+        cursor: grab;
+        -webkit-tap-highlight-color: transparent;
+    
+        .swiper-scrollbar-drag {
+            height: 5px;
+            border-radius: 1px;
+            background-color: $primaryColor;
+        }
+
+        .cards_no-slider & {
+            display: none;
+        }
+    }
+}
+
+.card {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    width: 100%;
+    height: 100%;
+    @include adaptiveValue("border-radius", 10px, 20px, $minWidth, $mobile);
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 2px solid #000;
+    cursor: pointer;
+
+    @media (min-width: $mobile) {
+        @include adaptiveValue("border-radius", 15px, 20px, $mobile, $desktop);
+    }
+
+    &_disable {
+        cursor: default;
+    }
+
+    &__title {
+        flex: 0 0 auto;
+        @include adaptiveValue("padding", 10px, 20px, $minWidth, $mediumMobile);
+        @include adaptiveValue("padding-top", 20px, 30px, $minWidth, $mediumMobile);
+        text-transform: uppercase;
+        @include adaptiveValue("font-size", 14px, 20px, $minWidth, $mediumMobile);
+        font-weight: 500;
+
+        @media (min-width: $mediumMobile) {
+            @include adaptiveValue("padding", 10px, 20px, $mediumMobile, $mobile);
+            @include adaptiveValue("padding-top", 20px, 30px, $mediumMobile, $mobile);
+            @include adaptiveValue("font-size", 13px, 20px, $mediumMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("padding", 10px, 20px, $mobile, $desktop);
+            @include adaptiveValue("padding-top", 20px, 30px, $mobile, $desktop);
+            @include adaptiveValue("font-size", 14px, 20px, $mobile, $desktop);
+        }
+    }
+
+    &__title-highlighting {
+        color: $primaryColor;
+    }
+
+    &__image {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        aspect-ratio: 1/1;
+        flex: 0 0 auto;
+    }
+
+    &__photo {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1.0001, 1.0001);
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+
+        &_type_mini {
+            width: 230%;
+            height: 230%;
+            top: auto;
+            bottom: 0;
+            transform-origin: center 70%;
+            transform: translateX(-50%) scale(1.0001, 1.0001);
+            object-fit: fill;
+        }
+
+        &_type_kitchen,
+        &_type_longheat,
+        &_type_light {
+            width: 101%;
+            height: 101%;
+        }
+
+        .card_disable & {
+            filter: grayscale(50%);
+            opacity: 0.4;
+        }
+
+        @media (any-hover: hover) {
+
+            .card:hover & {
+                transform: translate(-50%, -50%) scale(1.1, 1.1);
+
+                &_type_mini {
+                    transform: translateX(-50%) scale(1.06, 1.06);
+                }
+            }
+
+            .card_disable.card:hover & {
+                transform: translate(-50%, -50%) scale(1.0001, 1.0001);
+            }
+        }
+
+    }
+
+    &__info {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: flex-start;
+        align-items: stretch;
+        @include adaptiveValue("gap", 5px, 10px, $minWidth, $mediumMobile);
+        width: 100%;
+        flex: 1 1 auto;
+        @include adaptiveValue("padding", 10px, 20px, $minWidth, $mediumMobile);
+        @include adaptiveValue("padding-top", 15px, 25px, $minWidth, $mediumMobile);
+        @include adaptiveValue("padding-bottom", 20px, 30px, $minWidth, $mediumMobile);
+        font-family: $TTNorms;
+
+        @media (min-width: $mediumMobile) {
+            @include adaptiveValue("gap", 5px, 10px, $mediumMobile, $mobile);
+            @include adaptiveValue("padding", 10px, 20px, $mediumMobile, $mobile);
+            @include adaptiveValue("padding-top", 15px, 25px, $mediumMobile, $mobile);
+            @include adaptiveValue("padding-bottom", 20px, 30px, $mediumMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("gap", 5px, 8px, $mobile, $desktop);
+            @include adaptiveValue("padding", 10px, 20px, $mobile, $desktop);
+            @include adaptiveValue("padding-bottom", 20px, 30px, $mobile, $desktop);
+        }
+    }
+
+    &__data-item {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        @include adaptiveValue("gap", 5px, 10px, $minWidth, $mediumMobile);
+        flex: 0 0 auto;
+        @include adaptiveValue("font-size", 14px, 20px, $minWidth, $mediumMobile);
+        font-weight: 400;
+
+        @media (min-width: $mediumMobile) {
+            @include adaptiveValue("gap", 5px, 10px, $mediumMobile, $mobile);
+            @include adaptiveValue("font-size", 14px, 16px, $mediumMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("gap", 5px, 10px, $mobile, $desktop);
+            @include adaptiveValue("font-size", 12px, 18px, $mobile, $desktop);
+        }
+    }
+
+    &__data-item-title {
+    }
+
+    &__data-item-value {
+        text-align: end;
+        color: $primaryColor;
+    }
+
+    &__data-item-value-sup {
+        display: inline-block;
+        transform: translateY(-50%);
+        @include adaptiveValue("font-size", 8px, 14px, $minWidth, $mediumMobile);
+
+        @media (min-width: $mediumMobile) {
+            @include adaptiveValue("font-size", 8px, 14px, $mediumMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("font-size", 8px, 14px, $mobile, $desktop);
+        }
+    }
+
+    &__info-bottom {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: flex-end;
+        @include adaptiveValue("gap", 5px, 10px, $minWidth, $mediumMobile);
+        flex: 0 0 auto;
+        @include adaptiveValue("margin-top", 15px, 20px, $minWidth, $mobile);
+
+
+        @media (min-width: $mediumMobile) {
+            @include adaptiveValue("gap", 5px, 10px, $mediumMobile, $mobile);
+            @include adaptiveValue("margin-top", 15px, 20px, $mediumMobile, $mobile);
+
+        }
+        
+        @media (min-width: $mobile) {
+            @include adaptiveValue("gap", 5px, 10px, $mobile, $desktop);
+            margin-bottom: 0;
+            @include adaptiveValue("margin-top", 12px, 20px, $mobile, $desktop);
+
+        }
+    }
+
+    &__price {
+        transform: translateY(15%);
+        font-family: $Muller;
+        @include adaptiveValue("font-size", 16px, 20px, $minWidth, $mediumMobile);
+        font-weight: 700;
+        color: $primaryColor;
+        
+        @media (min-width: $mediumMobile) {
+            @include adaptiveValue("font-size", 14px, 20px, $mediumMobile, $mobile);
+        }
+        
+        @media (min-width: $mobile) {
+            transform: translateY(10%);
+            @include adaptiveValue("font-size", 16px, 20px, $mobile, $desktop);
+        }
+    }
+
+    &__details {
+        display: inline-block;
+        border-bottom: 1px solid $secondaryColor;
+        @include adaptiveValue("font-size", 16px, 20px, $minWidth, $mediumMobile);
+        font-weight: 400;
+        color: $secondaryColor;
+        transition: color 0.3s ease, 
+                    border-color 0.3s ease;
+
+        @media (min-width: $mediumMobile) {
+            @include adaptiveValue("font-size", 14px, 20px,$mediumMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("font-size", 16px, 20px, $mobile, $desktop);
+        }
+
+        @media (any-hover: hover) {
+
+            &:hover {
+                color: $primaryColor;
+                border-color: $primaryColor;
+
+                .card_disable & {
+                    color: $secondaryColor;
+                }
+            }
+        }
+
+        .card_disable & {
+            border-bottom: none;
+        }
+    }
+}
+
+.with-fancybox {
+
+    .lock-padding {
+        padding-right: var(--fancybox-scrollbar-compensate) !important;
+    }
+}

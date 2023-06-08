@@ -1,0 +1,34 @@
+.catalog-camp {
+    @include adaptiveValue("padding-top", 25px, 60px, $minWidth, $mobile);
+    @include adaptiveValue("padding-bottom", 25px, 60px, $minWidth, $mobile);
+    background-color: $backgroundColor;
+
+    @media (min-width: $mobile) {
+        @include adaptiveValue("padding-top", 30px, 60px, $mobile, $desktop);
+        @include adaptiveValue("padding-bottom", 30px, 60px, $mobile, $desktop);
+    }
+
+    &__container {
+    }
+
+    &__title {
+        @include adaptiveValue("margin-bottom", 25px, 40px, $minWidth, $mobile);
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-bottom", 15px, 30px, $mobile, $desktop);
+        }
+    }
+
+    &__cards {    
+    }
+
+    &__cards-wrapper {
+    }
+
+    &__card {
+    }
+
+    &__cards-scrollbar {
+        margin-top: 15px;
+    }
+}

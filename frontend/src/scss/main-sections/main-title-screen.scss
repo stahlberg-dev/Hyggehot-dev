@@ -1,0 +1,359 @@
+.title-screen {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+
+    &__background {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &__container {
+        display: flex;
+        position: relative;
+        align-items: flex-end;
+        height: 100%;
+
+        @media (min-width: $mobile) {
+            align-items: center;
+        }
+    }
+
+    &__content {
+        margin-bottom: 25vh;
+        width: 100%;
+        line-height: 1.2;
+        font-family: $TTNorms;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("max-width", 440px, 600px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("max-width", 600px, 1000px, $mobile, $desktop);
+            margin-bottom: 0;
+        }
+    }
+
+    &__title {
+        @include adaptiveValue("margin-bottom", 5px, 15px, $minWidth, $mobile);
+        @include adaptiveValue("margin-left", -4px, -6px, $minWidth, $mobile);
+        text-transform: uppercase;
+        @include adaptiveValue("font-size", 50px, 100px, $minWidth, $mobile);
+        font-weight: 700;
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-left", -7px, -10px, $mobile, $desktop);
+            @include adaptiveValue("font-size", 100px, 150px, $mobile, $desktop);
+            margin-bottom: 10px;
+        }
+    }
+
+    &__description {
+        @include adaptiveValue("font-size", 17px, 24px, $minWidth, $mobile);
+        font-weight: 400;
+        
+        @media (min-width: $mobile) {
+            text-transform: uppercase;
+            @include adaptiveValue("font-size", 20px, 34px, $mobile, $desktop);
+        }
+    }
+}
+
+/* .title-screen {
+    width: 100%;
+    min-width: $minWidth;
+    min-height: 100%;
+
+    &__slider {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    &__slider-wrapper {
+    }
+
+    &__slide {
+        position: relative;
+    }
+
+    &__slide-photo {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1.3);
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0s cubic-bezier(0, 0.71, 0.4, 0.97) 1.6s;
+
+        .swiper-slide-active & {
+            transform: translate(-50%, -50%);
+            transition: transform 4s cubic-bezier(0, 0.71, 0.4, 0.97);
+        }
+
+        .title-screen__slide_active & {
+            transform: translate(-50%, -50%);
+            transition: transform 4s cubic-bezier(0, 0.71, 0.4, 0.97);
+        }
+    }
+
+    &__slide-content {
+        display: flex;
+        position: relative;
+        align-items: flex-end;
+        height: 100%;
+
+        @media (min-width: $mobile) {
+            align-items: center;
+        }
+    }
+
+    &__slide-text {
+        margin-bottom: 25vh;
+        line-height: 1.2;
+        font-family: $TTNorms;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("max-width", 440px, 600px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("max-width", 600px, 1000px, $mobile, $desktop);
+            margin-bottom: 0;
+        }
+    }
+
+    &__slide-title {
+        @include adaptiveValue("margin-bottom", 5px, 15px, $minWidth, $mobile);
+        @include adaptiveValue("margin-left", -4px, -6px, $minWidth, $mobile);
+        text-transform: uppercase;
+        @include adaptiveValue("font-size", 50px, 100px, $minWidth, $mobile);
+        font-weight: 700;
+        opacity: 0;
+        transition: opacity 0s linear;
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-left", -7px, -10px, $mobile, $desktop);
+            @include adaptiveValue("font-size", 100px, 150px, $mobile, $desktop);
+            margin-bottom: 10px;
+        }
+
+        .swiper-slide-active & {
+            opacity: 1;
+            transition: opacity 1.5s linear 0.7s;
+        }
+
+        &_small {
+            @include adaptiveValue("margin-left", 0px, -2px, $minWidth, $mobile);
+            @include adaptiveValue("font-size", 35px, 70px, $minWidth, $mobile);
+
+            @media (min-width: $mobile) {
+                @include adaptiveValue("font-size", 60px, 90px, $mobile, $desktop);
+                margin-bottom: 15px;
+            }
+        }
+    }
+
+    &__slide-description {
+        @include adaptiveValue("font-size", 17px, 24px, $minWidth, $mobile);
+        font-weight: 400;
+        opacity: 0;
+        transition: opacity 0s linear;
+        
+        @media (min-width: $mobile) {
+            text-transform: uppercase;
+            @include adaptiveValue("font-size", 20px, 34px, $mobile, $desktop);
+        }
+
+        .swiper-slide-active & {
+            opacity: 1;
+            transition: opacity 0.7s linear 2s;
+        }
+    }
+
+    &__slide-button {
+        width: 100%;
+        @include adaptiveValue("margin-top", 25px, 40px, $minWidth, $mobile);
+        opacity: 0;
+        transition: background-color 0.3s ease,
+                    color 0.3s ease, 
+                    border-color 0.3s ease,
+                    opacity 0s linear;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("width", 200px, 260px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("width", 200px, 260px, $mobile, $desktop);
+            @include adaptiveValue("margin-top", 25px, 30px, $mobile, $desktop);
+        }
+
+        .swiper-slide-active & {
+            opacity: 1;
+            transition: background-color 0.3s ease,
+                        color 0.3s ease, 
+                        border-color 0.3s ease,
+                        opacity 0.7s linear 2.5s;
+        }
+    }
+
+    &__slide-button-text {
+
+    }
+
+    &__slider-controls {
+        display: flex;
+        position: absolute;
+        justify-content: space-between;
+        align-items: center;
+        bottom: $containerPadding;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 5;
+        max-width: $maxContainerWidth;
+        min-width: $minWidth;
+        width: 100%;
+        padding: 0 $containerPadding;
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("bottom", $containerPadding, 35px, $mobile, $desktop);
+        }
+    }
+
+    &__slider-button {
+        display: block;
+        position: relative;
+        @include adaptiveValue("width", 30px, 40px, $minWidth, $mobile);
+        @include adaptiveValue("height", 30px, 40px, $minWidth, $mobile);
+        border-radius: 50%;
+        border: 1px solid $secondaryColor;
+        background-color: transparent;
+        fill: $secondaryColor;
+        cursor: pointer;
+        transition: fill 0.3s ease, 
+                    border-color 0.3s ease;
+
+        @include mobileClickAnimation($secondaryColor, 20px, 20px, 0%, 0%, 50%);
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("width", 30px, 40px, $mobile, $desktop);
+            @include adaptiveValue("height", 30px, 40px, $mobile, $desktop);
+        }
+
+        @media (any-hover: hover) {
+                
+            &:hover {
+                border-color: $primaryColor;
+                fill: $primaryColor;
+            }
+        }
+
+        &_clicked {
+            border-color: $primaryColor;
+            fill: $primaryColor;
+        }
+    }
+
+    &__slider-prev-button {
+
+    }
+
+    &__slider-next-button {
+
+    }
+
+    &__slider-prev-icon,
+    &__slider-next-icon {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 25%;
+        aspect-ratio: 9/16;
+    }
+
+    &__slider-prev-icon {
+        transform: translate(-50%, -50%) rotate(180deg);
+    }
+
+    &__slider-pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include adaptiveValue("gap", 20px, 30px, $minWidth, $mobile);
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("gap", 20px, 25px, $mobile, $desktop);
+        }
+    }
+
+    .swiper-pagination-bullet {
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        line-height: 1;
+        font-family: $TTNorms;
+        @include adaptiveValue("font-size", 14px, 16px, $minWidth, $mobile);
+        font-weight: 500;
+        color: $secondaryColor;
+        cursor: pointer;
+        transition: color 0.3s ease;
+        -webkit-tap-highlight-color: transparent;
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("font-size", 14px, 16px, $mobile, $desktop);
+        }
+
+        @media (any-hover: hover) {
+
+            &:hover {
+                color: $primaryColor;
+            }
+        }
+
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: $secondaryColor;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        &.swiper-pagination-bullet-active {
+            color: transparent;
+
+            @media (any-hover: hover) {
+            
+                &:hover {
+                    color: transparent;
+                }
+            }
+
+            &::after {
+                opacity: 1;
+            }
+        }
+
+    }
+} */

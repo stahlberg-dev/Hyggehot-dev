@@ -1,0 +1,58 @@
+.category-title-screen {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+
+    &__background {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &__container {
+        display: flex;
+        position: relative;
+        align-items: flex-end;
+        height: 100%;
+
+        @media (min-width: $mobile) {
+            align-items: center;
+        }
+    }
+
+    &__content {
+        margin-bottom: 25vh;
+        width: 100%;
+        line-height: 1.2;
+        font-family: $TTNorms;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("max-width", 440px, 600px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("max-width", 600px, 1000px, $mobile, $desktop);
+            margin-bottom: 0;
+        }
+    }
+
+    &__title {
+        @include adaptiveValue("margin-bottom", 5px, 15px, $minWidth, $mobile);
+        @include adaptiveValue("margin-left", -3px, -5px, $minWidth, $mobile);
+        text-transform: uppercase;
+        @include adaptiveValue("font-size", 35px, 70px, $minWidth, $mobile);
+        font-weight: 700;
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-left", -5px, -7px, $mobile, $desktop);
+            @include adaptiveValue("font-size", 60px, 90px, $mobile, $desktop);
+            margin-bottom: 15px;
+        }
+    }
+}

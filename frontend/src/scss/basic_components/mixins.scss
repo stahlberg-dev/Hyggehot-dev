@@ -1,0 +1,121 @@
+@mixin adaptiveValue($property, $minValue, $maxValue, $minSize: $minWidth, $maxSize: $maxContainerWidth) {
+    
+    #{$property}: $minValue;
+    
+    @media (min-width: $minSize) {
+        #{$property}: calc($minValue + ($maxValue - $minValue) / 
+                      ($maxSize - $minSize) * (100vw - $minSize));
+    }
+
+    @media (min-width: $maxSize) {
+        #{$property}: $maxValue;
+    }
+}
+
+@mixin mobileClickAnimation($shadowColor: $secondaryColor, 
+                            $addedWidth: 10px, 
+                            $addedHeight: 10px,
+                            $shiftX: 0%,
+                            $shiftY: 0%,
+                            $borderRadius: 15px) {
+
+    @media (any-hover: none) {
+
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 50%;
+            border-radius: $borderRadius;
+            box-shadow: inset 0 0 15px 10px $shadowColor;
+            transform: translate(calc(-50% + $shiftX), calc(-50% + $shiftY));
+            opacity: 0;
+            transition: opacity 0.2s linear,
+                        height 0s linear 0.2s,
+                        width 0s linear 0.2s;
+        }
+
+        &_clicked::after {
+            opacity: 0.2;
+            width: calc(100% + $addedWidth);
+            height: calc(100% + $addedHeight);
+            transition: opacity 0.2s linear,
+                        height 0.2s linear,
+                        width 0.2s linear;
+        }
+    }
+}
+
+@mixin burger($stripeWidth) {
+
+    .burger {
+        display: block;
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: calc($stripeWidth * 10);
+        height: calc($stripeWidth * 5);
+        z-index: 5;
+        background-color: transparent;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+    
+        @media (min-width: $tablet) {
+            display: none;
+        }
+
+        @include mobileClickAnimation($secondaryColor, 16px, 16px);
+    
+        &__stripe {
+            position: absolute;
+            top: calc(50% - $stripeWidth / 2);
+            left: 0;
+            width: 100%;
+            height: $stripeWidth;
+            border-radius: calc($stripeWidth / 3);
+            background-color: $secondaryColor;
+            pointer-events: none;
+            transition: all 0.3s ease;
+    
+            &:first-child {
+                top: 0;
+            }
+            
+            &:last-child {
+                top: auto;
+                bottom: 0;
+            }
+
+            @media (any-hover: hover) {
+
+                .burger:hover & {
+                    background-color: $primaryColor;
+                }
+            }
+
+            .burger_clicked & {
+                background-color: $primaryColor;
+            }
+        }
+    
+        &_active {
+    
+            .burger__stripe {
+                transform: scale(0);
+    
+                &:first-child {
+                    transform: rotate(-45deg);
+                    top: calc(50% - $stripeWidth / 2);
+                }
+    
+                &:last-child {
+                    transform: rotate(45deg);
+                    bottom: calc(50% - $stripeWidth / 2);
+                }
+            }
+        }
+    }
+
+}

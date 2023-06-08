@@ -1,0 +1,219 @@
+.product-characteristics {
+
+    &__container {
+    }
+
+    &__title {
+        @include adaptiveValue("margin-bottom", 25px, 40px, $minWidth, $mobile);
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-bottom", 20px, 30px, $mobile, $desktop);
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-flow: column nowrap;
+        @include adaptiveValue("gap", 60px, 100px, $minWidth, $mobile);
+
+        @media (min-width: $mobile) {
+            flex-flow: row nowrap;
+            align-items: flex-start;
+            gap: 2%;
+        }
+    }
+
+    &__characteristics {
+        flex: 1 1 auto;
+    }
+
+    &__characteristic-list-wrapper {
+    }
+
+    &__characteristic-list {
+
+        &_hidden {
+        }
+    }
+
+    &__characteristic {
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+        align-items: flex-end;
+        @include adaptiveValue("gap", 5px, 20px, $minWidth, $mobile);
+        @include adaptiveValue("padding-top", 15px, 30px, $minWidth, $mobile);
+        @include adaptiveValue("padding-bottom", 15px, 30px, $minWidth, $mobile);
+        font-family: $TTNorms;
+        @include adaptiveValue("font-size", 15px, 18px, $minWidth, $mobile);
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("gap", 10px, 10px, $mobile, $desktop);
+            @include adaptiveValue("padding-top", 15px, 20px, $mobile, $desktop);
+            @include adaptiveValue("padding-bottom", 15px, 20px, $mobile, $desktop);
+            @include adaptiveValue("font-size", 14px, 18px, $mobile, $desktop);
+        }
+
+        &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: calc(100% - 1px);
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: $fourthColor;
+        }
+
+        &_top {
+            padding-top: 0;
+        }
+
+        &_hidden_mobile {
+            display: none;
+
+            @media (min-width: $mobile) {
+                display: flex;
+            }
+        }
+
+        &_hidden_desktop {
+
+            @media (min-width: $mobile) {
+                display: none;
+            }
+        }
+    }
+
+    &__characteristic-title {
+
+    }
+
+    &__characteristic-value {
+        color: $primaryColor;
+    }
+
+    &__button {
+        display: block;
+        position: relative;
+        @include adaptiveValue("margin-top", 35px, 60px, $minWidth, $mobile);
+        width: 100%;
+
+        @media (min-width: $smallMobile) {
+            width: 60%;
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-top", 25px, 30px, $mobile, $desktop);
+            @include adaptiveValue("width", 250px, 330px, $mobile, $desktop);
+        }
+    }
+
+    &__text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        &_type_shown {
+            opacity: 0;
+        }
+
+        .product-characteristics__button_shown & {
+
+            &_type_hidden {
+                opacity: 0;
+            }
+
+            &_type_shown {
+                opacity: 1;
+            }
+        }
+    }
+
+    &__image {
+        position: relative;
+        flex: 0 0 auto;
+        width: 100%;
+        text-align: center;
+
+        @media (min-width: $mobile) {
+            width: 49%;
+            @include adaptiveValue("height", 450px, 560px, $mobile, $desktop);
+        }
+    }
+
+    &__photo-wrapper {
+        display: inline-block;
+        position: relative;
+        width: 100%;
+
+        @media (min-width: $smallMobile) {
+            width: 60%;
+        }
+
+        @media (min-width: $mobile) {
+            width: auto;
+            height: 100%;
+        }
+    }
+
+    &__photo {
+        display: block;
+        width: 100%;
+
+        @media (min-width: $mobile) {
+            width: auto;
+            height: 100%;
+        }
+    }
+
+    &__size {
+        display: block;
+        position: absolute;
+        font-family: $TTNorms;
+        @include adaptiveValue("font-size", 12px, 16px, $minWidth, $smallMobile);
+        color: $fourthColor;
+
+        @media (min-width: $smallMobile) {
+            @include adaptiveValue("font-size", 11px, 17px, $smallMobile, $mobile);
+        }
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("font-size", 14px, 16px, $mobile, $desktop);
+        }
+
+        &_number_1 {
+            top: 7%;
+            left: 25.5%;
+        }
+
+        &_number_2 {
+            top: 22%;
+            left: 8%;
+            transform: rotate(-90deg);
+
+            @media (min-width: $smallMobile) {
+                transform: rotate(0deg);
+                left: 2%;
+            }
+        }
+
+        &_number_3 {
+            top: 50%;
+            left: 20%;
+        }
+
+        &_number_4 {
+            top: 74%;
+            left: 88%;
+            transform: rotate(-90deg);
+
+            @media (min-width: $smallMobile) {
+                transform: rotate(0deg);
+                top: 74%;
+                left: 94%;
+            }
+        }
+    }
+}

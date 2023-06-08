@@ -1,0 +1,21 @@
+.category-page {
+
+    &__category-title-screen {
+        @include adaptiveValue("margin-bottom", 50px, 120px, $minWidth, $mobile);
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-bottom", 60px, 120px, $mobile, $desktop);
+        }
+    }
+
+    &__category-catalog {
+        @include adaptiveValue("margin-bottom", 50px, 120px, $minWidth, $mobile);
+
+        @media (min-width: $mobile) {
+            @include adaptiveValue("margin-bottom", 60px, 120px, $mobile, $desktop);
+        }
+    }
+}
+
+@import "category-sections/category-title-screen.scss";
+@import "category-sections/category-catalog.scss";

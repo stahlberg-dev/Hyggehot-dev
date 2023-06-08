@@ -1,0 +1,62 @@
+<div data-popup-name="consultation" class="consultation-popup popup">
+    <div class="consultation-popup__wrapper popup__wrapper">
+        <div class="consultation-popup__content popup__content">
+            <div class="consultation-popup__close popup__close">
+                <span class="popup__close-stripe"></span>
+                <span class="popup__close-stripe"></span>
+            </div>
+            <h3 class="consultation-popup__title">Получить консультацию</h3>
+            <form class="consultation-popup__form form jsLeadForm" action="#">
+                <input type="hidden" name="form" value="консультация">
+                <input class="consultation-popup__input form__input" type="text" name="name" required placeholder="Имя">
+                <input class="consultation-popup__input form__input form__input_phone-mask" type="tel" name="phone" required placeholder="Телефон">
+                <label class="consultation-popup__agreement form__agreement">
+                    <input type="checkbox" class="consultation__agreement-input form__agreement-input" name="agreement" checked required> 
+                    <div class="consultation-popup__agreement-checkbox form__agreement-checkbox"></div>
+                    <div class="consultation-popup__agreement-text form__agreement-text">
+                        Я&nbsp;даю&nbsp;согласие на&nbsp;обработку своих персональных данных
+                    </div>
+                </label>
+                <button type="submit" class="consultation-popup__button form__button button button_color_primary">
+                    <div class="consultation-popup__button-text form__button-text button__text">Перезвоните&nbsp;мне</div>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div data-popup-name="partnership" class="partnership-popup popup">
+    <div class="partnership-popup__wrapper popup__wrapper">
+        <div class="partnership-popup__content popup__content">
+            <div class="partnership-popup__close popup__close">
+                <span class="popup__close-stripe"></span>
+                <span class="popup__close-stripe"></span>
+            </div>
+            <h3 class="partnership-popup__title">Спасибо!</h3>
+            <div class="partnership-popup__text">
+                Заявка на&nbsp;сотрудничество отправлена.
+            </div>
+            <svg class="partnership-popup__icon">
+                <use xlink:href="img/icon_sprite/sprite.svg#tick"></use>
+            </svg>
+        </div>
+    </div>
+</div>
+
+<div data-popup-name="thanks" class="thanks-popup popup">
+    <div class="thanks-popup__wrapper popup__wrapper">
+        <div class="thanks-popup__content popup__content">
+            <div class="thanks-popup__close popup__close">
+                <span class="popup__close-stripe"></span>
+                <span class="popup__close-stripe"></span>
+            </div>
+            <h3 class="thanks-popup__title">Спасибо!</h3>
+            <div class="thanks-popup__text">
+                В&nbsp;ближайшее время с&nbsp;вами свяжется менеджер и&nbsp;проконсультирует.
+            </div>
+            <svg class="thanks-popup__icon">
+                <use xlink:href="img/icon_sprite/sprite.svg#tick"></use>
+            </svg>
+        </div>
+    </div>
+</div>
